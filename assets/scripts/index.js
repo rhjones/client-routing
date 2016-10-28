@@ -1,6 +1,6 @@
 'use strict';
 
 $(() => {
-  require('./router/index').initializeAndConfigureRouter();
+  require('./router/index').start();
   require('./router/events').registerPaths();
 });

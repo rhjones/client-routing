@@ -1,6 +1,8 @@
 'use strict';
 
-const Router5 = require('router5').default;
+// const Router5 = require('router5').default;
+const router5 = require('router5');
+const browserPlugin = require('router5/plugins/browser').default;
 const loggerPlugin = require('router5').loggerPlugin;
 
 const routes = [
@@ -11,21 +13,16 @@ const routes = [
 ];
 
 const options = {
-  useHash: true,
-  hashPrefix: '!',
   defaultRoute: 'index',
 };
 
-const router = new Router5(routes, options)
-.usePlugin(loggerPlugin);
+const router = router5.createRouter(routes, options)
+.usePlugin(loggerPlugin)
+.usePlugin(browserPlugin({
+  useHash: true,
+  hashPrefix: '!',
+}));
 
-const initializeAndConfigureRouter = () => {
-  // useMiddleware should only be called once in a single app
-  router.useMiddleware(require('./dom').transition);
-  router.start();
-};
+router.useMiddleware(require('./dom').transition);
 
-module.exports = {
-  router,
-  initializeAndConfigureRouter,
-};
+module.exports = router;

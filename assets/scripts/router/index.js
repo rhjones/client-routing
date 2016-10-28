@@ -1,7 +1,7 @@
 'use strict';
 
 const Router5 = require('router5').default;
-const loggerPlugin = require('router5').loggerPlugin();
+const loggerPlugin = require('router5').loggerPlugin;
 
 const routes = [
   { name: 'index', path: '/' },

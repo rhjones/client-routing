@@ -1,7 +1,6 @@
 'use strict';
 
-const router = require('./index').router;
-const ui = require('./ui');
+const router = require('./index');
 
 // rootNode gives us access to array of routes from index.js
 // this is the array we're passing to Router5 when we create the router

@@ -1,9 +1,9 @@
 'use strict';
 
-// const Router5 = require('router5').default;
 const router5 = require('router5');
-const browserPlugin = require('router5/plugins/browser').default;
 const loggerPlugin = require('router5').loggerPlugin;
+const browserPlugin = require('router5/plugins/browser').default;
+
 
 const routes = [
   { name: 'index', path: '/' },

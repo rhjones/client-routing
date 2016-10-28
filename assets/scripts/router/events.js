@@ -1,14 +1,21 @@
 'use strict';
 
+const router = require('./index').router;
 const ui = require('./ui');
 
-const registerPaths = () => {
-  require('./paths').forEach((path) => {
-    $(`a[href="${path}"]`).on('click', (event) => {
-      event.preventDefault();
+// rootNode gives us access to array of routes from index.js
+// this is the array we're passing to Router5 when we create the router
+// router is a graph of nodes & transitions
+// rootNode is root node of that graph
+const routes = router.rootNode.children.map((route) => {
+  return route.name;
+});
 
-      ui.hideAllContent();
-      ui.showContent(path);
+const registerPaths = () => {
+  routes.forEach((route) => {
+    $(`a[href="#${route}"]`).on('click', (event) => {
+      event.preventDefault();
+      router.navigate(route);
     });
   });
 };
